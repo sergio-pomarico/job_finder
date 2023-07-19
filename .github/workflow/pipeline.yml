@@ -1,0 +1,35 @@
+name: Run units an integration test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
+jobs:
+  android-build:
+    needs: [test]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+          node-version: 18
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --no-optional
+      - name: Make gradlew executable
+        run: cd android && chmod +x ./gradlew
+      - name: build prod
+        run: cd android && ./gradlew app:bundleRelease
+      - uses: actions/upload-artifact@v3
+        with:
+          name: 'android-app'
+          path: 'android/app/build/outputs/bundle/release/app-release.aab'
+          dest: 'android-app.aab'
