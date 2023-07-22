@@ -34,6 +34,12 @@ const theme = createTheme({
     secondary: palette.secondary,
     tertiary: palette.tertiary,
   },
+  textVariants: {
+    defaults: {
+      fontFamily: 'DMSans-Regular',
+      fontSize: 16,
+    },
+  },
 });
 
 export const ThemeProvider = ({children}: {children: ReactNode}) => (
