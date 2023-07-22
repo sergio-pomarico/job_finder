@@ -1,8 +1,11 @@
 import React from 'react';
 import Navigation from './routes/main';
+import {ThemeProvider} from './config/theme';
 
-function App(): JSX.Element {
-  return <Navigation />;
-}
+const App = () => (
+  <ThemeProvider>
+    <Navigation />
+  </ThemeProvider>
+);
 
 export default App;
