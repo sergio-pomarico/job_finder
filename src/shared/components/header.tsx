@@ -1,9 +1,10 @@
 import React from 'react';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Image, TouchableOpacity} from 'react-native';
+import {Image} from 'react-native';
 import {useTheme} from '../../config/theme';
 import Box from '../atoms/box';
+import Touchable from '../atoms/touchable';
 
 const menu = require('../../../assets/icons/menu.png');
 const profile = require('../../../assets/images/kemal.jpg');
@@ -16,13 +17,14 @@ const Header = ({}: NativeStackHeaderProps) => {
 
   return (
     <Box
+      backgroundColor="white"
       flexDirection="row"
       alignItems="center"
       width="100%"
       justifyContent="space-between"
       padding="sm"
       style={{marginTop: insets.top}}>
-      <TouchableOpacity>
+      <Touchable>
         <Image
           source={menu}
           style={{
@@ -32,7 +34,7 @@ const Header = ({}: NativeStackHeaderProps) => {
           }}
           resizeMode="cover"
         />
-      </TouchableOpacity>
+      </Touchable>
       <Box>
         <Image
           source={profile}

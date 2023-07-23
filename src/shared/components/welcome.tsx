@@ -1,12 +1,12 @@
 import React from 'react';
-import {FlatList, Image} from 'react-native';
+import {Image} from 'react-native';
 import {useTheme} from '../../config/theme';
 
 import Box from '../atoms/box';
 import Text from '../atoms/text';
 import Touchable from '../atoms/touchable';
 import Input from '../components/input';
-import {jobTypes} from '../../config/constans';
+import Tabs from './tabs';
 
 const icon = require('../../../assets/icons/search.png');
 
@@ -58,6 +58,7 @@ const Welcome = () => {
           />
         </Touchable>
       </Box>
+      <Tabs onPressTab={_ => {}} />
     </Box>
   );
 };
