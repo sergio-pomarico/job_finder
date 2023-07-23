@@ -33,6 +33,18 @@ const theme = createTheme({
     primary: palette.primary,
     secondary: palette.secondary,
     tertiary: palette.tertiary,
+    gray: palette.gray,
+    lightGray: palette.lightGray,
+    white: palette.white,
+    lightWhite: palette.lightWhite,
+  },
+  borderRadii: {
+    xs: 8,
+    sm: 12,
+    m: 16,
+    l: 20,
+    xl: 24,
+    xxl: 32,
   },
   textVariants: {
     defaults: {

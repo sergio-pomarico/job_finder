@@ -1,17 +1,16 @@
 import React from 'react';
 
-import {Text, View} from 'react-native';
+import Box from '../shared/atoms/box';
+import {ScrollView} from 'react-native';
+import Welcome from '../shared/components/welcome';
 
 const HomeScreen = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text>Home Screen</Text>
-    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <Box flex={1} padding="sm" backgroundColor="white">
+        <Welcome />
+      </Box>
+    </ScrollView>
   );
 };
 
