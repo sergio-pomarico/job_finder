@@ -2,6 +2,8 @@ import {AxiosHeaders, AxiosRequestConfig} from 'axios';
 import {RAPID_API_KEY, RAPID_API_URL, RAPID_API_HOST} from '@env';
 import Http from './axios';
 import {buidConfig} from './config';
+import Job from '../core/job';
+import RapidApiResponse from '../core/response';
 
 const rapidApiHeaders = AxiosHeaders.concat({
   'X-RapidAPI-Key': RAPID_API_KEY,
@@ -15,14 +17,15 @@ class Service extends Http {
     super(config);
   }
 
-  async search(query: string) {
-    const result = await this.get('/search', {
+  async search(query: string): Promise<Job[]> {
+    const request = await this.get<RapidApiResponse<Job[]>>('/search', {
       params: {
         query: query,
         page: 1,
         num_pages: 1,
       },
     });
+    const {data: result} = request.data;
     return result;
   }
 }
