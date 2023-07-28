@@ -17,7 +17,7 @@ class Service extends Http {
     super(config);
   }
 
-  async search(query: string): Promise<Job[]> {
+  search = async (query: string): Promise<Job[]> => {
     const request = await this.get<RapidApiResponse<Job[]>>('/search', {
       params: {
         query: query,
@@ -27,7 +27,7 @@ class Service extends Http {
     });
     const {data: result} = request.data;
     return result;
-  }
+  };
 }
 
 const Services = new Service(_config);
