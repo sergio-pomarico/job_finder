@@ -8,12 +8,15 @@ import Touchable from '../atoms/touchable';
 
 const menu = require('../../../assets/icons/menu.png');
 const profile = require('../../../assets/images/kemal.jpg');
+const back = require('../../../assets/icons/left.png');
+const share = require('../../../assets/icons/share.png');
 
 const SIZE = 24;
 
-const Header = ({}: NativeStackHeaderProps) => {
+const Header = ({navigation}: NativeStackHeaderProps) => {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
+  const {canGoBack} = navigation;
 
   return (
     <Box
@@ -24,9 +27,9 @@ const Header = ({}: NativeStackHeaderProps) => {
       justifyContent="space-between"
       padding="sm"
       style={{marginTop: insets.top}}>
-      <Touchable>
+      <Touchable onPress={canGoBack() ? () => navigation.goBack() : undefined}>
         <Image
-          source={menu}
+          source={canGoBack() ? back : menu}
           style={{
             width: SIZE,
             height: SIZE,
@@ -35,16 +38,17 @@ const Header = ({}: NativeStackHeaderProps) => {
           resizeMode="cover"
         />
       </Touchable>
-      <Box>
+      <Touchable>
         <Image
-          source={profile}
+          source={canGoBack() ? share : profile}
           style={{
-            width: SIZE * 1.5,
-            height: SIZE * 1.5,
-            borderRadius: theme.spacing.xs,
+            width: canGoBack() ? SIZE : SIZE * 1.5,
+            height: canGoBack() ? SIZE : SIZE * 1.5,
+            borderRadius: theme.spacing.sm,
           }}
+          resizeMode="cover"
         />
-      </Box>
+      </Touchable>
     </Box>
   );
 };

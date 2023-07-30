@@ -9,17 +9,7 @@ import Text from '../atoms/text';
 import Touchable from '../atoms/touchable';
 
 import {useTheme} from '../../config/theme';
-
-export const checkImageURL = (url: string) => {
-  if (!url) {
-    return false;
-  }
-  const pattern = new RegExp(
-    '^https?:\\/\\/.+\\.(png|jpg|jpeg|bmp|gif|webp)$',
-    'i',
-  );
-  return pattern.test(url);
-};
+import {checkImageURL} from '../../utils';
 
 const PopularJobs = ({}) => {
   const theme = useTheme();
