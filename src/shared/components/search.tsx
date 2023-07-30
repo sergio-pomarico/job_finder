@@ -11,7 +11,11 @@ import {useTheme} from '../../config/theme';
 const icon = require('../../../assets/icons/search.png');
 const SIZE = 24;
 
-const Search = ({}) => {
+interface SearchProps {
+  onPressSeach: () => void;
+}
+
+const Search = ({onPressSeach}: SearchProps) => {
   const theme = useTheme();
   return (
     <Box
@@ -29,7 +33,7 @@ const Search = ({}) => {
         <Input placeholder="What are looking for ?" onChance={() => {}} />
       </Box>
       <Touchable
-        onPress={() => {}}
+        onPress={onPressSeach}
         height="100%"
         width={50}
         marginLeft="xs"

@@ -9,8 +9,9 @@ import Search from '../shared/components/search';
 import Tabs from '../shared/components/tabs';
 import PopularJobs from '../shared/components/popular_jobs';
 import NearbyJobs from '../shared/components/near_jobs';
+import {MainRoutes, StackNavigationProps} from '../core/navigation';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: StackNavigationProps<MainRoutes, 'Home'>) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const HomeScreen = () => {
             Find your perfect job
           </Text>
         </Box>
-        <Search />
+        <Search onPressSeach={() => navigation.push('Detail', {id: ''})} />
         <Tabs onPressTab={_ => {}} />
         <PopularJobs />
         <NearbyJobs />

@@ -6,8 +6,10 @@ import {
 } from '@react-navigation/native-stack';
 import HomeScreen from '../pages/home';
 import Header from '../shared/components/header';
+import DetailScreen from '../pages/detail';
+import {MainRoutes} from '../core/navigation';
 
-const AppStack = createNativeStackNavigator();
+const AppStack = createNativeStackNavigator<MainRoutes>();
 
 export default () => {
   return (
@@ -19,6 +21,7 @@ export default () => {
           headerShadowVisible: false,
         }}>
         <AppStack.Screen name="Home" component={HomeScreen} />
+        <AppStack.Screen name="Detail" component={DetailScreen} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
