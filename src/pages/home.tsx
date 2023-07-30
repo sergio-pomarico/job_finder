@@ -2,9 +2,12 @@ import React, {useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import {useDispatch} from 'react-redux';
 import Box from '../shared/atoms/box';
-import Welcome from '../shared/components/welcome';
 
 import {getPorpularJobs} from '../store/jobs';
+import Text from '../shared/atoms/text';
+import Search from '../shared/components/search';
+import Tabs from '../shared/components/tabs';
+import PopularJobs from '../shared/components/popular_jobs';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -16,7 +19,17 @@ const HomeScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Box flex={1} padding="sm" backgroundColor="white">
-        <Welcome />
+        <Box>
+          <Text color="secondary" fontSize={20}>
+            Hello Sergio
+          </Text>
+          <Text color="primary" fontSize={20} marginTop="xs" fontWeight="bold">
+            Find your perfect job
+          </Text>
+        </Box>
+        <Search />
+        <Tabs onPressTab={_ => {}} />
+        <PopularJobs />
       </Box>
     </ScrollView>
   );
