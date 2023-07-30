@@ -3,18 +3,21 @@ import {ScrollView} from 'react-native';
 import {useDispatch} from 'react-redux';
 import Box from '../shared/atoms/box';
 
-import {getPorpularJobs} from '../store/jobs';
+import {getNearJobs, getPorpularJobs} from '../store/jobs';
 import Text from '../shared/atoms/text';
 import Search from '../shared/components/search';
 import Tabs from '../shared/components/tabs';
 import PopularJobs from '../shared/components/popular_jobs';
+import NearbyJobs from '../shared/components/near_jobs';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPorpularJobs('React Native developer'));
-  }, [dispatch]);
+    dispatch(getNearJobs('React Native developer, CO'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -30,6 +33,7 @@ const HomeScreen = () => {
         <Search />
         <Tabs onPressTab={_ => {}} />
         <PopularJobs />
+        <NearbyJobs />
       </Box>
     </ScrollView>
   );
