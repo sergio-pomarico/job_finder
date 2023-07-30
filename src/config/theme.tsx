@@ -16,8 +16,9 @@ const palette = {
   tertiary: '#FF7754',
   gray: '#83829A',
   lightGray: '#C1C0C8',
-  white: '#F3F4F8',
+  white: '#FFFFFF',
   lightWhite: '#FAFAFC',
+  black: '#212121',
 };
 
 const theme = createTheme({
@@ -37,6 +38,7 @@ const theme = createTheme({
     lightGray: palette.lightGray,
     white: palette.white,
     lightWhite: palette.lightWhite,
+    black: palette.black,
   },
   borderRadii: {
     xs: 8,

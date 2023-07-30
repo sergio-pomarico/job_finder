@@ -1,4 +1,5 @@
 interface Job {
+  job_id: string;
   employer_name: string;
   employer_logo: string;
   employer_company_type: string;

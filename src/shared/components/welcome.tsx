@@ -7,6 +7,7 @@ import Text from '../atoms/text';
 import Touchable from '../atoms/touchable';
 import Input from '../components/input';
 import Tabs from './tabs';
+import PopularJobs from './popular_jobs';
 
 const icon = require('../../../assets/icons/search.png');
 
@@ -59,6 +60,7 @@ const Welcome = () => {
         </Touchable>
       </Box>
       <Tabs onPressTab={_ => {}} />
+      <PopularJobs />
     </Box>
   );
 };
