@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import {useDispatch} from 'react-redux';
 import Box from '../shared/atoms/box';
@@ -13,6 +13,7 @@ import {MainRoutes, StackNavigationProps} from '../core/navigation';
 
 const HomeScreen = ({navigation}: StackNavigationProps<MainRoutes, 'Home'>) => {
   const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     dispatch(getPorpularJobs('React Native developer'));
@@ -31,7 +32,15 @@ const HomeScreen = ({navigation}: StackNavigationProps<MainRoutes, 'Home'>) => {
             Find your perfect job
           </Text>
         </Box>
-        <Search onPressSeach={() => navigation.push('Detail', {id: ''})} />
+        <Search
+          onPressSeach={() => {
+            if (searchTerm.length > 0) {
+              navigation.push('Search', {query: searchTerm});
+            }
+          }}
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+        />
         <Tabs onPressTab={_ => {}} />
         <PopularJobs />
         <NearbyJobs />

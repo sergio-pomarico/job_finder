@@ -12,4 +12,5 @@ export interface StackNavigationProps<
 export type MainRoutes = {
   Home: undefined;
   Detail: {id: string};
+  Search: {query: string};
 };

@@ -13,9 +13,11 @@ const SIZE = 24;
 
 interface SearchProps {
   onPressSeach: () => void;
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
 }
 
-const Search = ({onPressSeach}: SearchProps) => {
+const Search = ({searchTerm, setSearchTerm, onPressSeach}: SearchProps) => {
   const theme = useTheme();
   return (
     <Box
@@ -30,7 +32,11 @@ const Search = ({onPressSeach}: SearchProps) => {
         marginRight="xs"
         borderRadius="m"
         height="100%">
-        <Input placeholder="What are looking for ?" onChance={() => {}} />
+        <Input
+          placeholder="What are looking for ?"
+          onChance={text => setSearchTerm(text)}
+          value={searchTerm}
+        />
       </Box>
       <Touchable
         onPress={onPressSeach}

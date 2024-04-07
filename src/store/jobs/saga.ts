@@ -2,7 +2,7 @@ import {PayloadAction} from '@reduxjs/toolkit';
 import {call, put, takeLatest} from 'redux-saga/effects';
 import Services from '../../api/api';
 import Job from '../../core/job';
-import {setNearJobs, setPorpularJobs, setJobDetail} from './';
+import {setNearJobs, setPorpularJobs, setJobDetail, setSearchResults} from './';
 import {AxiosError} from 'axios';
 
 export function* findPopularJobs(action: PayloadAction<string, string>) {
@@ -40,9 +40,22 @@ export function* findNearJobs(action: PayloadAction<string, string>) {
   }
 }
 
+export function* findSearchResults(
+  action: PayloadAction<{page: number; term: string}, string>,
+) {
+  const {term, page} = action.payload;
+  try {
+    const jobs: Job[] = yield call(Services.search, term, page);
+    yield put(setSearchResults(jobs));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const jobsSaga = [
   takeLatest('jobs/getPorpularJobs', findPopularJobs),
   takeLatest('jobs/getNearJobs', findNearJobs),
   takeLatest('jobs/getJobDetail', findJobDetail),
+  takeLatest('jobs/getSearchTerm', findSearchResults),
 ];
 export default jobsSaga;

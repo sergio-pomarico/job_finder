@@ -7,6 +7,8 @@ const {
   setPorpularJobs,
   setNearJobs,
   setJobDetail,
+  getSearchTerm,
+  setSearchResults,
 } = Actions;
 
 export {
@@ -18,4 +20,6 @@ export {
   setPorpularJobs,
   setNearJobs,
   setJobDetail,
+  getSearchTerm,
+  setSearchResults,
 };

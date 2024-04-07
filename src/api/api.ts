@@ -17,11 +17,11 @@ class Service extends Http {
     super(config);
   }
 
-  search = async (query: string): Promise<Job[]> => {
+  search = async (query: string, page: number = 1): Promise<Job[]> => {
     const request = await this.get<RapidApiResponse<Job[]>>('/search', {
       params: {
         query: query,
-        page: 1,
+        page: page,
         num_pages: 1,
       },
     });

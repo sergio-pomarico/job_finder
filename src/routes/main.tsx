@@ -8,6 +8,7 @@ import HomeScreen from '../pages/home';
 import Header from '../shared/components/header';
 import DetailScreen from '../pages/detail';
 import {MainRoutes} from '../core/navigation';
+import SearchScreen from '../pages/search';
 
 const AppStack = createNativeStackNavigator<MainRoutes>();
 
@@ -22,6 +23,7 @@ export default () => {
         }}>
         <AppStack.Screen name="Home" component={HomeScreen} />
         <AppStack.Screen name="Detail" component={DetailScreen} />
+        <AppStack.Screen name="Search" component={SearchScreen} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
