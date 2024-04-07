@@ -28,6 +28,18 @@ class Service extends Http {
     const {data: result} = request.data;
     return result;
   };
+
+  detail = async (id: string): Promise<Job> => {
+    console.log('detail', id);
+    const request = await this.get<RapidApiResponse<Job[]>>('/job-details', {
+      params: {
+        job_id: id,
+        extended_publisher_details: 'false',
+      },
+    });
+    const {data: result} = request.data;
+    return result[0];
+  };
 }
 
 const Services = new Service(_config);

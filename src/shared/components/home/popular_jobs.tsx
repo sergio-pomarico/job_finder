@@ -1,19 +1,23 @@
 import React from 'react';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 import {useSelector} from 'react-redux';
 import {Image, FlatList} from 'react-native';
-import {RootState} from '../../core/redux';
+import {RootState} from '../../../core/redux';
 
-import Box from '../atoms/box';
-import Text from '../atoms/text';
-import Touchable from '../atoms/touchable';
+import Box from '../../atoms/box';
+import Text from '../../atoms/text';
+import Touchable from '../../atoms/touchable';
 
-import {useTheme} from '../../config/theme';
-import {checkImageURL} from '../../utils';
+import {useTheme} from '../../../config/theme';
+import {checkImageURL} from '../../../utils';
+import {MainRoutes} from '../../../core/navigation';
 
 const PopularJobs = ({}) => {
   const theme = useTheme();
   const {porpularJobs} = useSelector((state: RootState) => state.jobs);
+  const navigation = useNavigation<NavigationProp<MainRoutes>>();
+  const onPressCard = (id: string) => navigation.navigate('Detail', {id});
   return (
     <Box marginTop="xxl">
       <Box
@@ -48,7 +52,8 @@ const PopularJobs = ({}) => {
               shadowOpacity={0.25}
               shadowRadius={2}
               shadowOffset={{width: 2, height: 0}}
-              backgroundColor="white">
+              backgroundColor="white"
+              onPress={() => onPressCard(item.job_id)}>
               <Box
                 width={80}
                 height={80}

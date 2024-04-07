@@ -1,5 +1,4 @@
 import {configureStore} from '@reduxjs/toolkit';
-import Services from '../api/api';
 
 import createSagaMiddleware from 'redux-saga';
 import {all} from 'redux-saga/effects';
@@ -13,7 +12,7 @@ function* rootSaga() {
 }
 
 // Middlewares
-const sagaMiddleware = createSagaMiddleware({context: Services});
+const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
 
 const store = configureStore({

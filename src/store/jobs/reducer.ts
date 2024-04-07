@@ -1,9 +1,14 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import Job from '../../core/job';
 
-const initialState: {porpularJobs?: Job[]; nearJobs: Job[]} = {
+const initialState: {
+  porpularJobs?: Job[];
+  nearJobs: Job[];
+  job: Job | undefined;
+} = {
   porpularJobs: [],
   nearJobs: [],
+  job: undefined,
 };
 
 const jobSlice = createSlice({
@@ -17,6 +22,10 @@ const jobSlice = createSlice({
     getNearJobs: (_, __: PayloadAction<string, string>) => {},
     setNearJobs: (state, action: PayloadAction<Job[], string>) => {
       state.nearJobs = action.payload;
+    },
+    getJobDetail: (_, __: PayloadAction<string, string>) => {},
+    setJobDetail: (state, payload: PayloadAction<Job, string>) => {
+      state.job = payload.payload;
     },
   },
 });

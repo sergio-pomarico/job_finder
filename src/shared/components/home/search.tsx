@@ -2,13 +2,13 @@ import React from 'react';
 
 import {Image} from 'react-native';
 
-import Box from '../atoms/box';
-import Input from '../components/input';
-import Touchable from '../atoms/touchable';
+import Box from '../../atoms/box';
+import Input from '../input';
+import Touchable from '../../atoms/touchable';
 
-import {useTheme} from '../../config/theme';
+import {useTheme} from '../../../config/theme';
 
-const icon = require('../../../assets/icons/search.png');
+const icon = require('../../../../assets/icons/search.png');
 const SIZE = 24;
 
 interface SearchProps {

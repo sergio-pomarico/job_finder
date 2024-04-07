@@ -53,6 +53,14 @@ const theme = createTheme({
       fontFamily: 'DMSans-Regular',
       fontSize: 16,
     },
+    title: {
+      fontFamily: 'DMSans-Bold',
+      fontSize: 20,
+    },
+    subtitle: {
+      fontFamily: 'DMSans-Medium',
+      fontSize: 18,
+    },
   },
 });
 

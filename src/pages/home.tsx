@@ -5,10 +5,10 @@ import Box from '../shared/atoms/box';
 
 import {getNearJobs, getPorpularJobs} from '../store/jobs';
 import Text from '../shared/atoms/text';
-import Search from '../shared/components/search';
+import Search from '../shared/components/home/search';
 import Tabs from '../shared/components/tabs';
-import PopularJobs from '../shared/components/popular_jobs';
-import NearbyJobs from '../shared/components/near_jobs';
+import PopularJobs from '../shared/components/home/popular_jobs';
+import NearbyJobs from '../shared/components/home/near_jobs';
 import {MainRoutes, StackNavigationProps} from '../core/navigation';
 
 const HomeScreen = ({navigation}: StackNavigationProps<MainRoutes, 'Home'>) => {

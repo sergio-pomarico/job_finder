@@ -2,18 +2,22 @@ import React from 'react';
 
 import {useSelector} from 'react-redux';
 import {Image} from 'react-native';
-import {RootState} from '../../core/redux';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
-import Job from '../../core/job';
-import Box from '../atoms/box';
-import Text from '../atoms/text';
-import Touchable from '../atoms/touchable';
+import {RootState} from '../../../core/redux';
+import {useTheme} from '../../../config/theme';
+import Job from '../../../core/job';
+import Box from '../../atoms/box';
+import Text from '../../atoms/text';
+import Touchable from '../../atoms/touchable';
 
-import {useTheme} from '../../config/theme';
-import {checkImageURL} from '../../utils';
+import {checkImageURL} from '../../../utils';
+import {MainRoutes} from '../../../core/navigation';
 
 const NearbyJobs = ({}) => {
   const theme = useTheme();
+  const navigation = useNavigation<NavigationProp<MainRoutes>>();
+  const onPressCard = (id: string) => navigation.navigate('Detail', {id});
   const {nearJobs} = useSelector((state: RootState) => state.jobs);
   return (
     <Box marginTop="xxl">
@@ -44,7 +48,8 @@ const NearbyJobs = ({}) => {
             shadowColor="lightGray"
             shadowOpacity={0.25}
             shadowRadius={2}
-            shadowOffset={{width: 2, height: 0}}>
+            shadowOffset={{width: 2, height: 0}}
+            onPress={() => onPressCard(job.job_id)}>
             <Box
               width={80}
               height={80}
@@ -68,11 +73,12 @@ const NearbyJobs = ({}) => {
                 />
               )}
             </Box>
-            <Box>
+            <Box flex={1} ml="m">
               <Text
                 numberOfLines={1}
                 fontSize={theme.spacing.l}
-                fontFamily="DMSans-Bold">
+                fontFamily="DMSans-Bold"
+                ellipsizeMode="tail">
                 {job.job_title}
               </Text>
               <Text
